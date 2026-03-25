@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
+
+  <div class="p-4">
+
+    <h1 class="text-2xl font-bold mb-4">💰 Account</h1>
+
+    <!-- 💳 BANK BALANCE -->
+    <div class="bg-white/10 p-4 rounded-xl mb-4">
+      <h2 class="text-lg font-bold">Bank Balance</h2>
+      <p id="balance" class="text-3xl mt-2">Loading...</p>
+      <p class="text-sm text-gray-300 mt-1">Fetched from Bank</p>
+    </div>
+
+    <!-- 🏦 EMI -->
+    <div class="bg-white/10 p-4 rounded-xl mb-4">
+      <h2 class="text-lg font-bold">Bank EMI</h2>
+
+      <input id="loanName" placeholder="Loan Name"
+        class="w-full p-2 mb-2 rounded text-black">
+
+      <input id="emiAmount" type="number" placeholder="Amount"
+        class="w-full p-2 mb-2 rounded text-black">
+
+      <input id="emiDate" type="date"
+        class="w-full p-2 mb-2 rounded text-black">
+
+      <button onclick="addEMI()"
+        class="bg-green-500 w-full p-2 rounded">
+        Add EMI
+      </button>
+
+      <div id="emiList" class="mt-3 space-y-2"></div>
+    </div>
+
+    <!-- 👥 LENDERS -->
+    <div class="bg-white/10 p-4 rounded-xl mb-4">
+      <h2 class="text-lg font-bold">Lenders</h2>
+
+      <input id="lenderName" placeholder="Name"
+        class="w-full p-2 mb-2 rounded text-black">
+
+      <input id="lenderAmount" type="number" placeholder="Amount"
+        class="w-full p-2 mb-2 rounded text-black">
+
+      <input id="lenderDate" type="date"
+        class="w-full p-2 mb-2 rounded text-black">
+
+      <button onclick="addLender()"
+        class="bg-yellow-500 w-full p-2 rounded">
+        Add Lender
+      </button>
+
+      <div id="lenderList" class="mt-3 space-y-2"></div>
+    </div>
+
+  </div>
+
+  <script type="module" src="./js/account.js"></script>
+</body>
+</html>

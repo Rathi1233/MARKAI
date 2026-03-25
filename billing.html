@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Billing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
+
+  <div class="p-4">
+
+    <h1 class="text-2xl font-bold mb-4">🧾 Billing</h1>
+
+    <!-- CUSTOMER -->
+    <input id="customerName" placeholder="Customer Name"
+      class="w-full p-2 mb-2 rounded text-black">
+
+    <input id="customerPhone" placeholder="Phone"
+      class="w-full p-2 mb-4 rounded text-black">
+
+    <!-- PRODUCT SELECT -->
+    <select id="productSelect"
+      class="w-full p-2 mb-2 rounded text-black"></select>
+
+    <input id="quantity" type="number" placeholder="Quantity"
+      class="w-full p-2 mb-2 rounded text-black">
+
+    <!-- ➕ ADD ITEM -->
+    <button onclick="addItem()"
+      class="bg-blue-500 w-full p-2 rounded mb-3">
+      Add Item
+    </button>
+
+    <!-- 🧾 ITEMS LIST -->
+    <div id="itemsList" class="mb-4 space-y-2"></div>
+
+    <!-- ✅ GENERATE BILL -->
+    <button onclick="generateBill()"
+      class="bg-green-500 w-full p-2 rounded">
+      Generate Bill
+    </button>
+
+    <!-- 📄 BILL OUTPUT -->
+    <div id="billResult" class="mt-4"></div>
+
+  </div>
+
+  <script type="module" src="./js/billing.js"></script>
+</body>
+</html>

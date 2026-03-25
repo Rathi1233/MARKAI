@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MARKAI Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 min-h-screen"></body>
+  <!-- 🔝 TOP IMAGE -->
+  <div class="w-full h-48 bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center">
+  <h1 class="text-white text-2xl font-bold">MARKAI Dashboard</h1>
+</div>
+  <!-- 🧠 MAIN CONTAINER -->
+  <div class="p-4">
+
+    <!-- 🔹 SMALL BOXES -->
+    <div class="grid grid-cols-3 gap-4 mt-4">
+
+      <!-- STOCK -->
+      <div onclick="goTo('stock.html')"
+        class="bg-white p-4 rounded-xl shadow text-center cursor-pointer hover:scale-105 transition">
+        <h2 class="font-bold text-lg">📦 Stock</h2>
+      </div>
+
+      <!-- BILLING -->
+      <div onclick="goTo('billing.html')"
+        class="bg-white p-4 rounded-xl shadow text-center cursor-pointer hover:scale-105 transition">
+        <h2 class="font-bold text-lg">🧾 Billing</h2>
+      </div>
+
+      <!-- ACCOUNT -->
+      <div onclick="goTo('account.html')"
+        class="bg-white p-4 rounded-xl shadow text-center cursor-pointer hover:scale-105 transition">
+        <h2 class="font-bold text-lg">💰 Account</h2>
+      </div>
+
+    </div>
+
+    <!-- 🔥 BIG EXPENSE BUTTON -->
+    <div class="mt-6">
+      <div onclick="goTo('expenses.html')"
+        class="bg-green-500 text-white p-8 rounded-2xl shadow text-center cursor-pointer hover:scale-105 transition">
+        
+        <h2 class="text-2xl font-bold">📊 Track Expenses</h2>
+        <p class="text-sm mt-2">View profit, expenses & alerts</p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script>
+    function goTo(page) {
+      window.location.href = page;
+    }
+  </script>
+
+</body>
+</html>

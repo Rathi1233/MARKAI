@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Track</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
+
+  <div class="p-4">
+
+    <h1 class="text-2xl font-bold mb-4">🤖 AI Business Insights</h1>
+
+    <!-- 🔥 BUTTON -->
+    <button onclick="generateInsights()"
+      class="bg-purple-600 w-full p-3 rounded mb-4 hover:bg-purple-700 transition">
+      Generate Insights
+    </button>
+
+    <!-- 📊 OUTPUT -->
+    <div id="aiOutput"
+      class="bg-white/10 p-4 rounded-xl text-sm whitespace-pre-line">
+      Click "Generate Insights" to analyze your business...
+    </div>
+
+  </div>
+
+  <script type="module" src="./js/expenses.js"></script>
+</body>
+</html>
