@@ -1,29 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Track</title>
+  <title>AI Business Insights</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
+<body class="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 min-h-screen text-white font-sans relative">
 
-  <div class="p-4">
+  <!-- Glows -->
+  <div class="fixed top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full mix-blend-screen filter blur-[120px] pointer-events-none"></div>
 
-    <h1 class="text-2xl font-bold mb-4">🤖 AI Business Insights</h1>
-
-    <!-- 🔥 BUTTON -->
-    <button onclick="generateInsights()"
-      class="bg-purple-600 w-full p-3 rounded mb-4 hover:bg-purple-700 transition">
-      Generate Insights
+  <!-- Header -->
+  <div class="sticky top-0 z-20 glass-panel p-4 flex items-center gap-4">
+    <button onclick="window.location.href='dashboard.html'" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-white/10 transition">
+      <i class="fas fa-arrow-left"></i>
     </button>
+    <h1 class="text-2xl font-bold tracking-tight">🤖 AI Insights</h1>
+  </div>
 
-    <!-- 📊 OUTPUT -->
-    <div id="aiOutput"
-      class="bg-white/10 p-4 rounded-xl text-sm whitespace-pre-line">
+  <div class="p-6 max-w-5xl mx-auto space-y-6 relative z-10">
+    
+    <!-- 🔥 BUTTON -->
+    <div class="text-center mb-8">
+      <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-4xl shadow-xl shadow-purple-500/30 mb-4 animation-pulse">
+        🤖
+      </div>
+      <h2 class="text-2xl font-bold mb-2">Business Intelligence</h2>
+      <p class="text-gray-400 text-sm mb-6 max-w-md mx-auto">Get AI-driven insights on your inventory, sales, and upcoming payments.</p>
+      
+      <button id="generateBtn" onclick="generateInsights()"
+        class="glass-button px-8 py-3 rounded-xl font-bold shadow-lg text-lg flex items-center justify-center gap-3 mx-auto max-w-xs hover:scale-105 transition">
+        <i class="fas fa-magic"></i> Generate Insights
+      </button>
+    </div>
+
+    <!-- For backward compatibility or raw text (before JS update) -->
+    <div id="aiOutput" class="glass-card p-6 rounded-2xl text-sm whitespace-pre-line text-gray-300">
       Click "Generate Insights" to analyze your business...
     </div>
 
+    <!-- Structured JSON UI containers (Hidden initially) -->
+    <div id="aiDataView" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- FAST SELLING -->
+      <div class="glass-card p-6 rounded-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-bl-full pointer-events-none"></div>
+        <h3 class="text-lg font-bold text-green-400 mb-4 flex items-center gap-2"><i class="fas fa-arrow-trend-up"></i> Fast Selling</h3>
+        <ul id="fastSellingList" class="space-y-2 text-gray-300"></ul>
+      </div>
+
+      <!-- SLOW SELLING -->
+      <div class="glass-card p-6 rounded-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-bl-full pointer-events-none"></div>
+        <h3 class="text-lg font-bold text-red-400 mb-4 flex items-center gap-2"><i class="fas fa-arrow-trend-down"></i> Slow Selling</h3>
+        <ul id="slowSellingList" class="space-y-2 text-gray-300"></ul>
+      </div>
+
+      <!-- UPCOMING DUES -->
+      <div class="glass-card p-6 rounded-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-500/10 rounded-bl-full pointer-events-none"></div>
+        <h3 class="text-lg font-bold text-yellow-400 mb-4 flex items-center gap-2"><i class="fas fa-calendar-alt"></i> Upcoming Dues</h3>
+        <ul id="duesList" class="space-y-2 text-gray-300"></ul>
+      </div>
+
+      <!-- PAYMENT PRIORITY -->
+      <div class="glass-card p-6 rounded-2xl relative overflow-hidden">
+         <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-bl-full pointer-events-none"></div>
+         <h3 class="text-lg font-bold text-blue-400 mb-4 flex items-center gap-2"><i class="fas fa-list-ol"></i> Priority Actions</h3>
+         <ul id="priorityActionList" class="space-y-2 text-gray-300"></ul>
+      </div>
+
+    </div>
+
   </div>
+
+  <style>
+    @keyframes pulse-shadow {
+      0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(168, 85, 247, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+    }
+    .animation-pulse {
+      animation: pulse-shadow 2s infinite;
+    }
+  </style>
 
   <script type="module" src="./js/expenses.js"></script>
 </body>

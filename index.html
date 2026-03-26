@@ -3,28 +3,50 @@
 <head>
   <title>MARKAI Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body class="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 h-screen flex items-center justify-center text-white relative overflow-hidden">
+  
+  <!-- Background Glows -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-screen filter blur-[100px] animation-blob"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-screen filter blur-[100px] animation-blob" style="animation-delay: 2s"></div>
 
-  <div class="bg-white p-8 rounded-xl shadow-md w-80">
-    <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
+  <div class="glass-card p-10 rounded-3xl w-96 relative z-10">
+    <div class="text-center mb-8">
+      <h2 class="text-4xl font-bold text-gradient mb-2">MARKAI</h2>
+      <p class="text-gray-400 text-sm">Intelligent Business OS</p>
+    </div>
 
-    <input id="email" type="email" placeholder="Email"
-      class="w-full p-2 mb-3 border rounded">
+    <div class="space-y-4">
+      <div class="relative">
+        <i class="fas fa-envelope absolute left-4 top-4 text-gray-400"></i>
+        <input id="email" type="email" placeholder="Email Address"
+          class="w-full p-3 pl-10 rounded-xl glass-input">
+      </div>
 
-    <input id="password" type="password" placeholder="Password"
-      class="w-full p-2 mb-3 border rounded">
+      <div class="relative">
+        <i class="fas fa-lock absolute left-4 top-4 text-gray-400"></i>
+        <input id="password" type="password" placeholder="Password"
+          class="w-full p-3 pl-10 rounded-xl glass-input">
+      </div>
 
-    <button onclick="login()"
-      class="w-full bg-blue-500 text-white p-2 rounded mb-2">
-      Login
-    </button>
+      <button onclick="login()" id="loginBtn"
+        class="w-full glass-button p-3 rounded-xl mt-2 font-semibold">
+        Sign In
+      </button>
 
-    <button onclick="signup()"
-      class="w-full bg-green-500 text-white p-2 rounded">
-      Signup
-    </button>
+      <div class="text-center mt-4">
+        <p class="text-gray-400 text-sm">Don't have an account?</p>
+      </div>
+
+      <button onclick="signup()" id="signupBtn"
+        class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white p-3 rounded-xl transition duration-300 font-semibold">
+        Create Account
+      </button>
+    </div>
   </div>
 
   <script type="module" src="./js/auth.js"></script>

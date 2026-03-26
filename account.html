@@ -3,61 +3,82 @@
 <head>
   <title>Account</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
+<body class="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 min-h-screen text-white font-sans relative">
 
-  <div class="p-4">
+  <!-- Glows -->
+  <div class="fixed top-0 left-0 w-96 h-96 bg-yellow-600/10 rounded-full mix-blend-screen filter blur-[120px] pointer-events-none"></div>
 
-    <h1 class="text-2xl font-bold mb-4">💰 Account</h1>
+  <!-- Header -->
+  <div class="sticky top-0 z-20 glass-panel p-4 flex items-center gap-4">
+    <button onclick="window.location.href='dashboard.html'" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-white/10 transition">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <h1 class="text-2xl font-bold tracking-tight">💰 Accounts</h1>
+  </div>
 
+  <div class="p-6 max-w-4xl mx-auto space-y-6 relative z-10">
+    
     <!-- 💳 BANK BALANCE -->
-    <div class="bg-white/10 p-4 rounded-xl mb-4">
-      <h2 class="text-lg font-bold">Bank Balance</h2>
-      <p id="balance" class="text-3xl mt-2">Loading...</p>
-      <p class="text-sm text-gray-300 mt-1">Fetched from Bank</p>
+    <div class="glass-card p-8 rounded-3xl flex items-center justify-between">
+      <div>
+        <h2 class="text-sm font-semibold text-gray-400">Total Balance</h2>
+        <p id="balance" class="text-4xl font-bold mt-1 text-gradient">Loading...</p>
+        <p class="text-xs text-gray-500 mt-2">Fetched from Bank API</p>
+      </div>
+      <div class="w-20 h-20 rounded-full bg-yellow-500/20 flex items-center justify-center text-4xl text-yellow-500 shadow-lg shadow-yellow-500/10">
+        🏦
+      </div>
     </div>
 
-    <!-- 🏦 EMI -->
-    <div class="bg-white/10 p-4 rounded-xl mb-4">
-      <h2 class="text-lg font-bold">Bank EMI</h2>
-
-      <input id="loanName" placeholder="Loan Name"
-        class="w-full p-2 mb-2 rounded text-black">
-
-      <input id="emiAmount" type="number" placeholder="Amount"
-        class="w-full p-2 mb-2 rounded text-black">
-
-      <input id="emiDate" type="date"
-        class="w-full p-2 mb-2 rounded text-black">
-
-      <button onclick="addEMI()"
-        class="bg-green-500 w-full p-2 rounded">
-        Add EMI
-      </button>
-
-      <div id="emiList" class="mt-3 space-y-2"></div>
+    <!-- PRIORITY ALERTS SECTION (NEW) -->
+    <div id="prioritySection" class="hidden">
+      <h2 class="text-lg font-semibold mb-3 text-red-400 flex items-center gap-2">
+        <i class="fas fa-exclamation-circle"></i> Priority Payments
+      </h2>
+      <div id="priorityList" class="space-y-3"></div>
     </div>
 
-    <!-- 👥 LENDERS -->
-    <div class="bg-white/10 p-4 rounded-xl mb-4">
-      <h2 class="text-lg font-bold">Lenders</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 🏦 EMI -->
+      <div class="glass-card p-6 rounded-2xl relative">
+        <h2 class="text-lg font-semibold mb-4 text-gray-200 flex items-center gap-2"><i class="fas fa-building text-blue-400"></i> Bank EMI</h2>
 
-      <input id="lenderName" placeholder="Name"
-        class="w-full p-2 mb-2 rounded text-black">
+        <div class="space-y-3 mb-4">
+          <input id="loanName" placeholder="Loan Name" class="w-full p-3 rounded-xl glass-input">
+          <div class="flex gap-3">
+            <input id="emiAmount" type="number" placeholder="Amount (₹)" class="w-full p-3 rounded-xl glass-input">
+            <input id="emiDate" type="date" class="w-full p-3 rounded-xl glass-input px-2 text-sm">
+          </div>
+          <button onclick="addEMI()" class="w-full p-2.5 rounded-xl font-semibold bg-gradient-to-r from-blue-500 to-indigo-500 shadow-lg shadow-blue-500/20 hover:scale-[1.02] transition">
+            Add EMI
+          </button>
+        </div>
 
-      <input id="lenderAmount" type="number" placeholder="Amount"
-        class="w-full p-2 mb-2 rounded text-black">
+        <div id="emiList" class="mt-4 space-y-3"></div>
+      </div>
 
-      <input id="lenderDate" type="date"
-        class="w-full p-2 mb-2 rounded text-black">
+      <!-- 👥 LENDERS -->
+      <div class="glass-card p-6 rounded-2xl relative">
+        <h2 class="text-lg font-semibold mb-4 text-gray-200 flex items-center gap-2"><i class="fas fa-users text-orange-400"></i> Lenders</h2>
 
-      <button onclick="addLender()"
-        class="bg-yellow-500 w-full p-2 rounded">
-        Add Lender
-      </button>
+        <div class="space-y-3 mb-4">
+          <input id="lenderName" placeholder="Lender Name" class="w-full p-3 rounded-xl glass-input">
+          <div class="flex gap-3">
+            <input id="lenderAmount" type="number" placeholder="Amount (₹)" class="w-full p-3 rounded-xl glass-input">
+            <input id="lenderDate" type="date" class="w-full p-3 rounded-xl glass-input px-2 text-sm">
+          </div>
+          <button onclick="addLender()" class="w-full p-2.5 rounded-xl font-semibold bg-gradient-to-r from-orange-500 to-red-500 shadow-lg shadow-orange-500/20 hover:scale-[1.02] transition">
+            Add Lender
+          </button>
+        </div>
 
-      <div id="lenderList" class="mt-3 space-y-2"></div>
+        <div id="lenderList" class="mt-4 space-y-3"></div>
+      </div>
     </div>
 
   </div>

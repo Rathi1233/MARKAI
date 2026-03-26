@@ -3,42 +3,67 @@
 <head>
   <title>Billing</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
+<body class="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 min-h-screen text-white font-sans relative">
 
-  <div class="p-4">
+  <!-- Glows -->
+  <div class="fixed top-0 right-0 w-96 h-96 bg-green-600/10 rounded-full mix-blend-screen filter blur-[120px] pointer-events-none"></div>
 
-    <h1 class="text-2xl font-bold mb-4">🧾 Billing</h1>
-
-    <!-- CUSTOMER -->
-    <input id="customerName" placeholder="Customer Name"
-      class="w-full p-2 mb-2 rounded text-black">
-
-    <input id="customerPhone" placeholder="Phone"
-      class="w-full p-2 mb-4 rounded text-black">
-
-    <!-- PRODUCT SELECT -->
-    <select id="productSelect"
-      class="w-full p-2 mb-2 rounded text-black"></select>
-
-    <input id="quantity" type="number" placeholder="Quantity"
-      class="w-full p-2 mb-2 rounded text-black">
-
-    <!-- ➕ ADD ITEM -->
-    <button onclick="addItem()"
-      class="bg-blue-500 w-full p-2 rounded mb-3">
-      Add Item
+  <!-- Header -->
+  <div class="sticky top-0 z-20 glass-panel p-4 flex items-center gap-4">
+    <button onclick="window.location.href='dashboard.html'" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-white/10 transition">
+      <i class="fas fa-arrow-left"></i>
     </button>
+    <h1 class="text-2xl font-bold tracking-tight">🧾 Billing</h1>
+  </div>
+
+  <div class="p-6 max-w-3xl mx-auto space-y-6 relative z-10">
+
+    <div class="glass-card p-6 rounded-2xl">
+      <h2 class="text-lg font-semibold mb-4 text-gray-200">Customer Details</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs text-gray-400 ml-1 mb-1 block">Customer Name</label>
+          <input id="customerName" placeholder="E.g. John Doe" class="w-full p-3 rounded-xl glass-input">
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 ml-1 mb-1 block">Phone Number</label>
+          <input id="customerPhone" placeholder="+1..." class="w-full p-3 rounded-xl glass-input">
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 rounded-2xl">
+      <h2 class="text-lg font-semibold mb-4 text-gray-200">Add Items</h2>
+      <div class="flex flex-col md:flex-row gap-4 mb-4">
+        <div class="flex-1">
+          <label class="text-xs text-gray-400 ml-1 mb-1 block">Select Product</label>
+          <select id="productSelect" class="w-full p-3 rounded-xl glass-input bg-gray-900 border border-gray-700"></select>
+        </div>
+        <div class="w-full md:w-32">
+          <label class="text-xs text-gray-400 ml-1 mb-1 block">Quantity</label>
+          <input id="quantity" type="number" placeholder="1" class="w-full p-3 rounded-xl glass-input">
+        </div>
+      </div>
+      <button onclick="addItem()" class="glass-button w-full p-3 rounded-xl font-semibold flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600">
+        <i class="fas fa-plus"></i> Add Item
+      </button>
+    </div>
 
     <!-- 🧾 ITEMS LIST -->
-    <div id="itemsList" class="mb-4 space-y-2"></div>
-
-    <!-- ✅ GENERATE BILL -->
-    <button onclick="generateBill()"
-      class="bg-green-500 w-full p-2 rounded">
-      Generate Bill
-    </button>
+    <div>
+      <h2 class="text-lg font-semibold mb-3 text-gray-200">Cart</h2>
+      <div id="itemsList" class="space-y-3 mb-4"></div>
+      
+      <!-- ✅ GENERATE BILL -->
+      <button onclick="generateBill()" class="w-full p-4 rounded-xl font-bold flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition">
+        <i class="fas fa-file-invoice-dollar text-xl mt-1"></i> Generate Invoice
+      </button>
+    </div>
 
     <!-- 📄 BILL OUTPUT -->
     <div id="billResult" class="mt-4"></div>
